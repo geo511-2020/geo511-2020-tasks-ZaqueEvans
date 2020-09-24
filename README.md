@@ -1,1 +1,1 @@
-Repository to hold class activities for GEO511
+This is an repository for GEO 511 for ZaqueEvans
