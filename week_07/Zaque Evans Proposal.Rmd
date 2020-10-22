@@ -7,7 +7,7 @@ Where are Erie County economic development subsidies being allocated, at the tra
 
 # Inspiring Examples
 ## Example 1
-![ECIDA funding sites 2018](/2020_2021\FALL_2020\Fall_2020_SpatialDataScienceGEO511\ECIDA_2018_map.png)
+![ECIDA funding sites 2018](ECIDA_2018_map.png)
 This is the graphic I already made in ArcGIS, plotting 2018 ECIDA subsidies to Census tracts 
 and scaled according to tract-level median income. I will be adding median property value, now that I have parcel data from Erie County. I can make a similar plot with tmap. Please note, the color scale and symbol choices are because I am red-green colorblind.
 
