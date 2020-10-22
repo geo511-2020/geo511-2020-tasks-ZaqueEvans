@@ -1,0 +1,33 @@
+getwd()
+[<i class="fa fa-file-code-o fa-1x" aria-hidden="true"></i> Download this file as a template ](`r knitr::current_input()`).
+
+# Introduction to problem/question
+## Problem / Question
+Where are Erie County economic development subsidies being allocated, at the tract-level, with particular attention being paid to tract-level: income, property value, racial composition, and housing type. 
+
+# Inspiring Examples
+## Example 1
+![ECIDA funding sites 2018](/2020_2021\FALL_2020\Fall_2020_SpatialDataScienceGEO511\ECIDA_2018_map.png)
+This is the graphic I already made in ArcGIS, plotting 2018 ECIDA subsidies to Census tracts 
+and scaled according to tract-level median income. I will be adding median property value, now that I have parcel data from Erie County. I can make a similar plot with tmap. Please note, the color scale and symbol choices are because I am red-green colorblind.
+
+## Example 2
+knitr::include.graphics('https://buffalonews.com/news/local/tackling-the-region-s-racial-divide/article_0e87f6db-f602-535e-8c85-0296403c02fc.html')
+
+This Buffalo News graphic shows the continued segregation in the Buffalo metro. My preliminary analyses show that ECIDA subsidies are associated with race and proportion of rental properties per tract. This is an important element to include visually and analytically, to tell the whole story of ECIDA subsidy placement. 
+
+## Example 3
+![Arlington Development Zones](https://www.arlingtoneconomicdevelopment.com/AEDMura7/assets/Image/images/Grant%20Awards%20Map.png)
+
+This is an ideal inspiration for plotting, taken from Arlington County, VA, where they show economic development grants, colored by qualitative type. Unfortunately my data does not delineate subsidy amount or type, it is a simple binary variable. However, this may be useful when bringing in tax parcel data, or if I make plots including other covariates. 
+
+# Proposed data sources
+The data sources are threefold: 1) a unique data set of 2018 Erie County Industrial Development Agency (ECIDA) subsidy addresses, cleaned and geocoded by me. 2) US Census American Community Survey (ACS) 5-year estimates for 2013-2017. 3) 2017 Erie County NY tax parcel data. Currently the geogoded ECIDA data has been joined to the ACS attribute data. 
+
+# Proposed methods
+
+Using either tmap or plotly, I will make maps that show the location of ECIDA subsidies from 2018 and where they are in Erie County, NY according to race, a measure of "affluence" - which is an index of median tract-level income and median tract-level property value, since buildings of high property value such as office buildings may have few residents and therefore low income - and a measure of either modal building type, or proportion rent vs owner. As the Buffalo metro experiences higher levels of investment, often public-sector mediated, it is important to capture the demographic, SES, and spatial economic characteristics of where these economic development subsidies are distributed. These measures capture that. 
+
+# Expected results
+
+I would like to produce at least three plots that show subsidies and their location by race, affluence, and property type. If possible, I would like to run binary logistic regressions and negative binomial regressions (for the high number of tracts that received zero subsidies), to test statistical significance between receipt of an ECIDA subsidy and the aforementioned tract characteristics. Preliminary analyses without parcel data shows an association between proportion White and proportion renter, suggesting ECIDA subsidies are helping drive gentrification in Erie County. 
