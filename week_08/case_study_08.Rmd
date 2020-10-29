@@ -1,7 +1,48 @@
 ---
-title: "Case Study 08"
-author: Your Name
-date: August 1, 2020
-output: github_document
+title: "Case Study 08: Annual Mean CO2"
+author: Zaque Evans
+date: October 29, 2020
+output: 
+  github_document: default
+  html_document: default
+  powerpoint_presentation: default
+  word_document: default
 ---
- 
+```{r include = FALSE}
+library(tidyverse)
+library(ggthemes)
+library(knitr)
+library(dplyr)
+library(kableExtra)
+library(magick)
+library(webshot)
+```
+``` {r include = FALSE}
+AnnMeanCO2 <- read_table("ftp://aftp.cmdl.noaa.gov/products/trends/co2/co2_annmean_mlo.txt", 
+  skip = 56)
+print(AnnMeanCO2)
+head(AnnMeanCO2)
+str(AnnMeanCO2)
+```
+``` {r eval = TRUE, echo = FALSE}
+output_plot <- ggplot(AnnMeanCO2, aes(year, mean)) +
+  geom_line() +
+  labs(x = "Year", y = "Mauna Loa Annual Mean CO2 (ppm)", 
+  title = "Annual Mean CO2 Concentrations, 1959 - present") +
+  theme_classic()
+
+output_plot
+```
+``` {r include = FALSE}
+recent_decade <- AnnMeanCO2 %>%
+    arrange(desc(year))
+
+recent_decade
+```
+## Annual Mean CO2 (ppm) 2010-2019, Muana Lao Observatory
+``` {r eval = TRUE, echo = FALSE}
+kable(recent_decade[1:10, 2:3], caption = "Annual Mean CO2, 2010 - 2019") %>%
+  kable_styling("striped") %>%
+  as_image(width = 10, file = "E:/2020_2021/FALL_2020/Fall_2020_SpatialDataScienceGEO511/geo511-2020-tasks-ZaqueEvans-first_git/week_08/co2_table.png")
+```
+
