@@ -1,5 +1,6 @@
 ## Zaque Evans
 ## GEO 511: Resource presentation
+## Actually gave presentation on Week 8
 ## Plotly
 
 install.packages("plotly")
@@ -17,7 +18,7 @@ diamonds %>%
 
 plot_ly(diamonds, x = ~cut, y = ~clarity)
 
-plot_ly(diamonds, x = ~cut, color = ~clarity, colors = "Pastel1")
+plot_ly(diamonds, x = ~cut, color = ~clarity, colors = "Pastel2")
 
 ##Colors used from ColorBrewer
 
@@ -38,7 +39,6 @@ zoos
 
 MidwestCollegeBox <- plot_ly(midwest, x = ~percollege, color = ~state, type = "box")
 MidwestCollegeBox
-
 
 
 ## Plotting with ggplot2
