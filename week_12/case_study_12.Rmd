@@ -1,7 +1,61 @@
 ---
 title: "Case Study 12"
-author: Your Name
-date: August 1, 2020
+author: Zaque Evans
+date: Week 12
 output: github_document
 ---
- 
+## Load and install required packages
+```{r echo=FALSE}
+install.packages('widgetframe')
+install.packages('rnoaa')
+install.packages('xts')
+install.packages('dygraphs')
+
+library(dplyr)
+library(ggplot2)
+library(ggmap)
+library(widgetframe)
+library(htmlwidgets)
+library(tidyverse)
+library(rnoaa)
+library(xts)
+library(dygraphs)
+library(plotly)
+```
+
+## Used code privded to get temp data
+``` {r echo=FALSE, message=FALSE}
+d=meteo_tidy_ghcnd("USW00014733",
+                   date_min = "2016-01-01", 
+                   var = c("TMAX"),
+                   keep_flags=T) %>% 
+   mutate(date=as.Date(date),
+          tmax=as.numeric(tmax)/10) #Divide the tmax data by 10 to convert to degrees.
+
+d
+
+summary(d)
+head(d)
+
+?meteo_tidy_ghcnd
+
+?xts
+
+weather_xts <- xts(d$tmax, order.by=d$date)
+
+weather_xts
+str(weather_xts)
+?dygraph
+```
+## Dygraph plot of Buffalo Max. Temp
+``` {r echo=FALSE}
+dygraph(weather_xts, main="Daily Max. Temperature in Buffalo, NY") %>%
+  dyRangeSelector(dateWindow = c("2020-01-01", "2020-10-31"))
+```
+
+## What other data visualizations can be used? Used a step plot; cool
+``` {r echo=FALSE}
+dygraph(weather_xts, main="Daily Max. Temperature in Buffalo, NY") %>%
+  dyOptions(stepPlot = TRUE) %>%
+  dyRangeSelector(dateWindow = c("2020-01-01", "2020-10-31"))
+```
