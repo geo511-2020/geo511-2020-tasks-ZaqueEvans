@@ -2,7 +2,7 @@
 title: "Case Study 11"
 author: Zaque Evans
 date: Week 11
-output: html
+output: html_document
 ---
 
 ```{r echo=FLASE, message=FALSE}
