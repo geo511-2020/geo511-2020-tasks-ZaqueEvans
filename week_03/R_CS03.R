@@ -1,4 +1,5 @@
-
+## Case Study 03
+## Zaque EVans
 
 library(ggplot2)
 library(tidyverse)
@@ -32,16 +33,19 @@ gapminder_continent <- gapmindNoKuwait %>%
 
 gapminder_continent
 
-ggplot(gapmindNoKuwait, aes(year,gdpPercap, color = continent, size = pop/100000)) +
-  geom_line(data = gapmindNoKuwait) +
+## This gave me the biggest headache for far too long 
+## Kyle in other group helped with this, and I think he, himself got help too and Adam posted help in slack at one point
+
+ggplot(gapmindNoKuwait, aes(x = year, y = gdpPercap, color = continent, group = country, fill = continent, size = pop/100000)) + 
+  geom_line(data = gapmindNoKuwait, size = 0.5) +
   geom_point() +
-  geom_line(data = gapminder_continent, mapping = aes(year, gdpPercapweighted,
-                                           color = "black", size = pop)) +
-  geom_point(data = gapminder_continent, mapping = aes(year, gdpPercapweighted,
-                                     color = "black", size = pop)) +
-  facet_wrap(~continent, nrow=1) +
-  theme_bw()
-  
-  labs(...)
+  geom_line(data = gapminder_continent, aes(x = year, y = gdpPercapweighted), color = "black", inherit.aes = FALSE) +
+  geom_point(data = gapminder_continent, aes(x = year, y = gdpPercapweighted, size = pop/100000), color = "black", inherit.aes = FALSE) +
+  facet_wrap(~continent,nrow=1) +
+  theme_bw() +
+  labs(x = "Year", y = "GDP per capita", size = "Population (100k)")
+
+ggsave("CaseStudy03.png", width = 15, units = "in") 
+
 
   
